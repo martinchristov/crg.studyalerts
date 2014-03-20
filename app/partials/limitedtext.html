@@ -1,0 +1,4 @@
+<div class="limitedtext">
+	<textarea maxlength="{{maxlen}}" ng-model="$parent.study.msg" placeholder="{{placeholder}}"></textarea>
+	<div class="counter" ng-hide="maxlength==0" ng-class="{red:charsleft<0}">{{charsleft}} chars left</div>
+</div>

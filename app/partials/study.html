@@ -1,0 +1,34 @@
+<div class="study">
+	<a class="via" ng-click="toggleVia()" ng-class="{sms:study.via==1,mail:study.via==0}"></a>
+	<a class="target" ng-click="toggleTarget()">{{study.target | target}}</a>
+	<a class="compare" ng-click="toggleCompare()">{{study.compare | comparers}}</a>
+	<input type="text" class="value" ng-model="study.value">
+	<!-- <textarea ng-model="study.msg" maxlength="400" ng-hide="study.via==1" placeholder="enter email message"></textarea>
+	<textarea ng-model="study.msg" maxlength="100" ng-show="study.via==1" placeholder="enter sms"></textarea> -->
+	<limitedtext model="study.msg" maxlen="400" placeholder="enter email message" ng-show="study.via==0"></limitedtext>
+	<limitedtext model="study.msg" maxlen="100" placeholder="enter sms" ng-show="study.via==1"></limitedtext>
+	
+	<!-- <div date-picker="start" min-view="date"></div> -->
+	<div class="clearfix"></div>
+	<div class="timeset">
+		<a class="cal" ng-hide="study.anytime" ng-click="study.anytime=true;"></a>
+		<a class="time" ng-show="study.anytime" ng-click="study.anytime=false;"></a>
+		<span ng-show="study.anytime" class="anytime">Anytime</span>
+
+		<div class="dropdown" ng-hide="study.anytime">
+	      <a class="dropdown-toggle btn" ng-click="dateopen=!dateopen">
+	        {{study.timestamp|date}}
+	      </a>
+
+	      <div class="dropdown-menu" ng-show="dateopen" ng-click="$event.preventDefault();$event.stopPropagation()">
+	        <div date-picker="study.timestamp" min-view="date"></div>
+	      </div>
+	    </div>
+	</div>
+	
+    
+	<div class="btns">
+		<a ng-click="save()" class="save" ng-disabled="(study.via==0&&study.msg.length>400)||(study.via==1&&study.msg.length>100)" ng-show="study.changed||study.unsaved">save</a>
+		<a ng-click="del()" class="del">delete</a>
+	</div>
+</div>

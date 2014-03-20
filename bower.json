@@ -1,0 +1,10 @@
+{
+  "name": "crg-studyalerts",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "angular": "~1.2.14",
+    "ng-datepicker": "~1.1.0"
+  },
+  "devDependencies": {}
+}
