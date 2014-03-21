@@ -221,3 +221,25 @@
     }
 }
 
+//animations
+
+.studies .study{
+    &.ng-enter,&.ng-leave,&.ng-move{
+        -webkit-transition:all .5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        // transition-delay: .5s;
+        -webkit-transition-delay: .2s; /* Safari */
+    }
+    &.ng-leave{
+        -webkit-transition-delay: 0s;
+    }
+    &.ng-leave.ng-leave-active,&.ng-enter{
+        opacity: 0;
+        margin-right: -420px;
+        @include transform(translate(-100px));
+    }
+    &.ng-leave, &.ng-enter.ng-enter-active{
+        opacity: 1;
+        margin-right: 30px;
+        @include transform(translate(0px));
+    }
+}

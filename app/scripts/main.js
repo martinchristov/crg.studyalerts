@@ -2,7 +2,8 @@
 var angular;
 
 angular.module('crg.studyalerts', [
-		'datePicker'
+		'datePicker',
+		'ngAnimate'
 	]);
 
 //controller
