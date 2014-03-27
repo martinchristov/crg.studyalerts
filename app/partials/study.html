@@ -3,12 +3,11 @@
 	<a class="target" ng-click="toggleTarget()">{{study.target | target}}</a>
 	<a class="compare" ng-click="toggleCompare()">{{study.compare | comparers}}</a>
 	<input type="text" class="value" ng-model="study.value">
-	<!-- <textarea ng-model="study.msg" maxlength="400" ng-hide="study.via==1" placeholder="enter email message"></textarea>
-	<textarea ng-model="study.msg" maxlength="100" ng-show="study.via==1" placeholder="enter sms"></textarea> -->
-	<limitedtext model="study.msg" maxlen="400" placeholder="enter email message" ng-show="study.via==0"></limitedtext>
-	<limitedtext model="study.msg" maxlen="100" placeholder="enter sms" ng-show="study.via==1"></limitedtext>
 	
-	<!-- <div date-picker="start" min-view="date"></div> -->
+	<limitedtext ng-model="study.msg" maxlen="400" placeholder="enter email message" ng-show="study.via==0"></limitedtext>
+
+	<limitedtext ng-model="study.msg" maxlen="100" placeholder="enter sms" ng-show="study.via==1"></limitedtext>
+	
 	<div class="clearfix"></div>
 	<div class="timeset">
 		<a class="cal" ng-hide="study.anytime" ng-click="study.anytime=true;"></a>

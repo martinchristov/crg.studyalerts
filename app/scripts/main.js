@@ -113,17 +113,26 @@ directive('limitedtext', [function () {
 	return {
 		restrict: 'E',
 		replace:true,
+		transclude:true,
+		require:'?ngModel',
 		templateUrl:'partials/limitedtext.html',
 		scope:{
-			maxlen:'@maxlen',
-			placeholder:'@placeholder'
+			maxlen:'@',
+			placeholder:'@'
 		},
-		link: function ($scope) {
-			//todo: learn how to do this loosely coupled
-			//the directive should not reach out to its parent
-			$scope.$parent.$watch('study.msg',function(){
-				$scope.charsleft = $scope.maxlen - $scope.$parent.study.msg.length;
+		link: function ($scope, el, attrs, ngModel) {
+			var textarea = el.find('textarea');
+			ngModel.$render = function(){
+				textarea.val(ngModel.$viewValue);
+				$scope.charsleft = $scope.maxlen - ngModel.$viewValue.length;
+			};
+			textarea.on('blur keyup change', function(){
+				$scope.$apply(read);
 			});
+			function read () {
+				ngModel.$setViewValue(textarea.val());
+				$scope.charsleft = $scope.maxlen - ngModel.$viewValue.length;
+			}
 		}
 	};
 }]);
